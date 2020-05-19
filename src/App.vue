@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="contact" v-for="contact in allContacts" :key="contact.id">
+      <h3>{{ contact.name }}</h3>
+      <p>{{ contact.email }}</p>
+      <li>{{ contact.dev }}</li>
+      <li>{{ contact.position }}</li>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "App",
-  components: {
-    HelloWorld
+  // computed: {
+  //   allContacts() {
+  //     return this.$store.getters.allContacts;
+  //   }
+  // }
+  computed: mapGetters(["allContacts"]),
+  methods: mapActions(["fetchContacts"]),
+  async mounted() {
+    this.fetchContacts(2);
+    // this.$store.dispatch("fetchContacts");
   }
 };
 </script>
@@ -23,6 +34,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 60px auto;
+  width: 400px;
+}
+.contact {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
 }
 </style>

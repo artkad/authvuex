@@ -1,0 +1,25 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Elena Popova",
+      "email": "lena@mail.ru",
+      "dev": "Sales",
+      "position": "Sale manager"
+    },
+    {
+      "id": 2,
+      "name": "Alex Ivanov",
+      "email": "alex@mail.ru",
+      "dev": "IT",
+      "position": "Web"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "root@root.com",
+      "password": "123456"
+    }
+  ]
+}
