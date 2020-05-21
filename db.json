@@ -4,15 +4,21 @@
       "id": 1,
       "name": "Elena Popova",
       "email": "lena@mail.ru",
-      "dev": "Sales",
+      "department": "Sales",
       "position": "Sale manager"
     },
     {
       "id": 2,
       "name": "Alex Ivanov",
       "email": "alex@mail.ru",
-      "dev": "IT",
+      "department": "IT",
       "position": "Web"
+    },
+    {
+      "id": "002",
+      "name": "Shevchenko",
+      "department": "Department",
+      "position": "Big Boss"
     }
   ],
   "users": [
