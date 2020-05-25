@@ -53,7 +53,8 @@ export default {
         id: this.id,
         name: this.name,
         department: this.department,
-        position: this.position
+        position: this.position,
+        base: "contacts"
       };
       this.addContact(newContact);
       this.$router.push({ path: "/" });

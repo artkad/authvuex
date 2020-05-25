@@ -3,22 +3,14 @@
     {
       "id": 1,
       "name": "Elena Popova",
-      "email": "lena@mail.ru",
       "department": "Sales",
       "position": "Sale manager"
     },
     {
       "id": 2,
       "name": "Alex Ivanov",
-      "email": "alex@mail.ru",
-      "department": "IT",
-      "position": "Web"
-    },
-    {
-      "id": "002",
-      "name": "Shevchenko",
-      "department": "Department",
-      "position": "Big Boss"
+      "department": "IT1",
+      "position": "Web dev"
     }
   ],
   "users": [

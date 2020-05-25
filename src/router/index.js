@@ -4,6 +4,9 @@ import Dashboard from "@/components/Dashboard";
 import NewContact from "@/components/NewContact";
 import ViewContact from "@/components/ViewContact";
 import EditContact from "@/components/EditContact";
+import Login from "@/components/Login";
+import Register from "@/components/Register";
+import store from "../store";
 
 Vue.use(Router);
 
@@ -15,6 +18,22 @@ let router = new Router({
       component: Dashboard,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login,
+      meta: {
+        requiresGuest: true
+      }
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Register,
+      meta: {
+        requiresGuest: true
       }
     },
     {
@@ -42,6 +61,34 @@ let router = new Router({
       }
     }
   ]
+});
+// Nav guards
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.getters.isLogged) {
+      next({
+        path: "/login",
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.requiresGuest)) {
+    if (store.getters.isLogged) {
+      next({
+        path: "/",
+        query: {
+          redirect: to.fullPath
+        }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
