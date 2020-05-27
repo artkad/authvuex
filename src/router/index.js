@@ -6,7 +6,7 @@ import ViewContact from "@/components/ViewContact";
 import EditContact from "@/components/EditContact";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
-import store from "../store";
+// import store from "../store";
 
 Vue.use(Router);
 
@@ -65,7 +65,8 @@ let router = new Router({
 // Nav guards
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.isLogged) {
+    // if (!store.getters.isLogged) {
+    if (localStorage.getItem("token") !== "true") {
       next({
         path: "/login",
         query: {
@@ -76,7 +77,8 @@ router.beforeEach((to, from, next) => {
       next();
     }
   } else if (to.matched.some(record => record.meta.requiresGuest)) {
-    if (store.getters.isLogged) {
+    // if (store.getters.isLogged) {
+    if (localStorage.getItem("token") == "true") {
       next({
         path: "/",
         query: {

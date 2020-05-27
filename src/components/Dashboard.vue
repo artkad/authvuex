@@ -33,10 +33,13 @@
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "dashboard",
-  computed: mapGetters(["allContacts"]),
-  methods: mapActions(["fetchContacts"]),
+  computed: mapGetters(["allContacts", "isLogged", "getUserName"]),
+  methods: mapActions(["fetchContacts", "toggleIsLogged"]),
   async mounted() {
     this.fetchContacts();
+    if (localStorage.getItem("token") == "true" && this.isLogged == false) {
+      this.toggleIsLogged();
+    }
   }
 };
 </script>

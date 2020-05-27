@@ -5,13 +5,8 @@ import router from "./router";
 
 Vue.config.productionTip = false;
 
-let app;
-// if (!store.getters.isLogged) {
-if (!app) {
-  app = new Vue({
-    router,
-    store,
-    render: h => h(App)
-  }).$mount("#app");
-}
-// }
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount("#app");

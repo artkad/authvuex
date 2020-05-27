@@ -41,7 +41,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["checkLoginPassword", "toggleIsLogged"]),
+    ...mapActions(["checkLoginPassword", "toggleIsLogged", "setUserState"]),
     login() {
       const logPas = {
         email: this.email,
@@ -51,6 +51,8 @@ export default {
       this.checkLoginPassword(logPas).then(data => {
         if (data === true) {
           this.toggleIsLogged();
+          this.setUserState(this.email);
+          localStorage.setItem("token", true);
           this.$router.push("/");
         } else {
           alert("wrong login");

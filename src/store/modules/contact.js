@@ -3,7 +3,8 @@ let base = "contacts/";
 export default {
   state: {
     contacts: [],
-    isLoggedIn: false
+    isLoggedIn: false,
+    isUser: ""
   },
   actions: {
     async fetchContacts({ commit }) {
@@ -65,6 +66,9 @@ export default {
     },
     toggleIsLogged({ commit }) {
       commit("TOGGLE_LOGGEDIN");
+    },
+    setUserState({ commit }, user) {
+      commit("SET_USER", user);
     }
   },
   mutations: {
@@ -73,6 +77,9 @@ export default {
     },
     TOGGLE_LOGGEDIN(state) {
       state.isLoggedIn = !state.isLoggedIn;
+    },
+    SET_USER(state, user) {
+      state.isUser = user;
     }
   },
   getters: {
@@ -81,6 +88,9 @@ export default {
     },
     isLogged(state) {
       return state.isLoggedIn;
+    },
+    getUserName(state) {
+      return state.isUser;
     }
   }
 };

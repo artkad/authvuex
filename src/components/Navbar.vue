@@ -6,6 +6,7 @@
           >Contact manager</router-link
         >
         <ul class="right">
+          <li v-if="isLogged">{{ getUserName }}</li>
           <li v-if="isLogged"><router-link to="/">Dashboard</router-link></li>
           <li v-if="!isLogged">
             <router-link to="/login">Login</router-link>
@@ -27,12 +28,14 @@ import { mapGetters, mapActions } from "vuex";
 import store from "../store";
 export default {
   name: "navbar",
-  computed: mapGetters(["isLogged"]),
+  computed: mapGetters(["isLogged", "getUserName"]),
   methods: {
     ...mapActions(["toggleIsLogged"]),
     logout: function() {
       if (store.getters.isLogged) {
         this.toggleIsLogged();
+        localStorage.removeItem("token");
+        localStorage.clear();
         this.$router.push("login");
       }
     }
